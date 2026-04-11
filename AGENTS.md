@@ -1,5 +1,11 @@
 # AGENTS.md
 
+## Project workflow
+- Always read `memory_bank/project_brief.md` for product context.
+- Always use `memory_bank/tasks.md` as the execution source of truth.
+- For routine implementation work, prefer the `task-executor` skill.
+- After completing a task, update `memory_bank/tasks.md` and `memory_bank/progress.md`.
+
 ## Product context
 ### Core Concept
 This is an AI scheduling assistant focused on generating daily schedule according to personal goals.
@@ -50,6 +56,11 @@ Display:
 - Tailwind
 - Zod for validation
 
+## Development principles
+- Make the smallest reasonable change.
+- Avoid unrelated refactoring.
+- Keep implementation aligned with the MVP scope.
+
 ## Engineering rules
 - Make minimal, high-confidence changes
 - Reuse existing patterns before introducing new abstractions
@@ -76,5 +87,3 @@ Provide:
 Prefer:
 + incremental steps
 + small, testable components
-
-

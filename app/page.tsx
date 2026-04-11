@@ -1,65 +1,67 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="flex min-h-screen items-center bg-[radial-gradient(circle_at_top,#fff7ed,transparent_45%),linear-gradient(180deg,#fffaf3_0%,#fff 48%,#f8fafc_100%)] px-6 py-16 text-slate-950">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
+        <section className="max-w-2xl space-y-6">
+          <p className="inline-flex rounded-full border border-amber-200 bg-amber-100/70 px-3 py-1 text-sm font-medium text-amber-900">
+            Daily planning for focused solo work
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          <div className="space-y-4">
+            <h1 className="text-5xl font-semibold tracking-tight text-balance sm:text-6xl">
+              Turn goals and tasks into a plan you can actually follow today.
+            </h1>
+            <p className="max-w-xl text-lg leading-8 text-slate-600">
+              Daylo helps a single user combine priorities, tasks, and available
+              time blocks into a realistic schedule with clear reasoning and
+              room to re-plan.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3 text-sm font-medium text-slate-700">
+            <span className="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200">
+              Capture goals and tasks
+            </span>
+            <span className="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200">
+              Shape today&apos;s schedule
+            </span>
+            <span className="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200">
+              Re-plan from feedback
+            </span>
+          </div>
+        </section>
+
+        <section className="grid w-full max-w-xl gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          <article className="rounded-3xl bg-slate-950 p-6 text-slate-50 shadow-xl shadow-slate-950/10">
+            <p className="text-sm uppercase tracking-[0.2em] text-amber-300/80">
+              Input
+            </p>
+            <h2 className="mt-3 text-xl font-semibold">What matters today?</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-300">
+              Add goals, break them into concrete tasks, and record the time you
+              actually have available.
+            </p>
+          </article>
+          <article className="rounded-3xl bg-white p-6 shadow-lg ring-1 ring-slate-200">
+            <p className="text-sm uppercase tracking-[0.2em] text-sky-700/80">
+              Output
+            </p>
+            <h2 className="mt-3 text-xl font-semibold">A workable schedule</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              Generate a daily plan that balances priority, time constraints,
+              and what can realistically be completed.
+            </p>
+          </article>
+          <article className="rounded-3xl bg-emerald-50 p-6 shadow-lg ring-1 ring-emerald-100">
+            <p className="text-sm uppercase tracking-[0.2em] text-emerald-800/80">
+              Next
+            </p>
+            <h2 className="mt-3 text-xl font-semibold">Explain and adjust</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-700">
+              Show the reasoning behind the plan and reshape the day when new
+              feedback arrives.
+            </p>
+          </article>
+        </section>
+      </div>
+    </main>
   );
 }
