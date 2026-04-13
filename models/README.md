@@ -2,12 +2,12 @@
 
 Database-backed domain entities live here.
 
-Planned examples:
+Current contents:
 
-- `goal.ts`
-- `task.ts`
-- `time-block.ts`
-- `schedule.ts`
+- `goal.ts`: Goal model with status, priority, timestamps, and a virtual task relationship
+- `task.ts`: Task model with scheduling fields and an optional Goal reference
+- `schedule.ts`: Daily schedule model with embedded time blocks, task assignments, reasoning, and feedback placeholders
+- `time-block.ts`: Shared embedded TimeBlock schema for user availability windows and scheduled assignments
 
 Guidelines:
 
