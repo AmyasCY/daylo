@@ -80,25 +80,25 @@ Write Zod validation schemas
   - [x] Keep UI clean and usable
 
 # Epic 4: Tasks CRUD
-- Implement Task creation API
-  - Support optional `goalId`
-  - Validate deadline, estimatedDuration, priority, status
-- Implement Task list API
-  - Fetch basic list
-  - Support filtering by status or goal association
-- Implement Task detail API
-  - Return full task info
-  - Include related goal data
-- Implement Task update API
-  - Support status and basic field edits
-  - Maintain partial update capability
-- Implement Task deletion API
-  - Delete task and return standardized response
-  - Handle missing cases
-- Implement Tasks management page
-  - Display task list
-  - Support create, edit, delete
-  - Allow setting deadline, duration, priority, status, goal
+- [x] Implement Task creation API
+  - [x] Support optional `goalId`
+  - [x] Validate deadline, estimatedDuration, priority, status
+- [x] Implement Task list API
+  - [x] Fetch basic list
+  - [x] Support filtering by status or goal association
+- [x] Implement Task detail API
+  - [x] Return full task info
+  - [x] Include related goal data
+- [x] Implement Task update API
+  - [x] Support status and basic field edits
+  - [x] Maintain partial update capability
+- [x] Implement Task deletion API
+  - [x] Delete task and return standardized response
+  - [x] Handle missing cases
+- [x] Implement Tasks management page
+  - [x] Display task list
+  - [x] Support create, edit, delete
+  - [x] Allow setting deadline, duration, priority, status, goal
 
 # Epic 5: Scheduling MVP
 - Define schedule generation I/O contract
@@ -170,6 +170,8 @@ Write Zod validation schemas
 - Add basic testing
   - [x] Plan test entry if full framework not yet added
   - [x] Add the initial local test runner setup
+  - [x] Add route validation coverage for Task CRUD
+  - [x] Add serializer coverage for task response shaping
   - Cover core schedule sorting/assignment logic
   - Cover key pure service functions
 - Clean up default boilerplate

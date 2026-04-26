@@ -36,8 +36,14 @@ export default function Home() {
             >
               Open goals board
             </Link>
+            <Link
+              href="/tasks"
+              className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-400 hover:text-slate-950"
+            >
+              Open tasks board
+            </Link>
             <span className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600">
-              Goal CRUD is live
+              Goals and tasks are live
             </span>
           </div>
         </section>

@@ -29,21 +29,28 @@
 - 完成 Goal 更新 API 初版：新增 `PATCH /api/goals/[goalId]`，支持部分字段更新、Zod 校验、未找到处理与统一响应结构
 - 完成 Goal 删除 API 初版：新增 `DELETE /api/goals/[goalId]`，未找到返回 404，并在删除 goal 前将关联 tasks 的 `goalId` 置空
 - 完成 Goals 管理页初版：新增 `/goals` 页面，支持列表展示、新增、编辑、删除，并从首页提供入口
+- 完成 Task 创建 API 初版：新增 `POST /api/tasks`，支持可选 `goalId`、deadline、estimatedDurationMinutes、priority、status 与 completedAt 校验
+- 完成 Task 列表 API 初版：新增 `GET /api/tasks`，支持按 status 与 goal 关联过滤，并返回关联 goal 摘要信息
+- 完成 Task 详情 API 初版：新增 `GET /api/tasks/[taskId]`，支持 ObjectId 校验、未找到返回 404，并返回完整 task 与 goal 摘要
+- 完成 Task 更新 API 初版：新增 `PATCH /api/tasks/[taskId]`，支持部分字段更新、goal 关联校验与统一响应结构
+- 完成 Task 删除 API 初版：新增 `DELETE /api/tasks/[taskId]`，未找到返回 404，并返回稳定删除结果
+- 完成 Tasks 管理页初版：新增 `/tasks` 页面，支持列表展示、新增、编辑、删除，并可设置 goal、deadline、duration、priority、status 与 completedAt
 - 完成本地 Docker 开发工作流初版：新增 `docker-compose.yml` 以启动 MongoDB，并在 README 补充容器启动、关闭、清理和数据库健康检查说明
 - 完成本地测试工作流初版：新增 Vitest 配置、`npm run test` / `npm run test:watch` 脚本，并为 schemas、共享响应 helper、goal 序列化和路由前置校验补充首批测试
+- 补充 Task CRUD 测试：新增 task serializer 测试与 Task 路由前置校验测试
 
 # 未完成
 - 提供真实 `MONGODB_URI` 并完成数据库联调
-- 实现 Task CRUD
 - 实现 TimeBlock 输入与相关页面/接口
 - 实现 Schedule 生成、reasoning 与持久化流程
 - 实现 re-planning
-- 实现 Goals / Tasks / Schedule 的用户界面
+- 实现 Schedule 的用户界面
 
 # 建议下一里程碑
-完成“核心数据能力”阶段：
-- 继续完成 Goal list/detail/update/delete API
-- 然后推进 Goal 管理页与 Task CRUD
+推进 Scheduling MVP：
+- 先定义 schedule generation 的输入输出契约
+- 然后落地 task priority scoring 和 time-block assignment
+- 再补 schedule generation API 与 reasoning 输出
 
 # 备注
 当前 memory bank 以现状记录为主，后续每完成一个阶段应同步更新这些文件，避免上下文漂移。

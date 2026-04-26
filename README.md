@@ -12,7 +12,7 @@ Daylo is a single-user daily planning app. The goal of the MVP is to help a user
 
 ## Current Status
 
-This repository is in the foundation stage. The project already has Daylo-specific site metadata, core infrastructure, initial domain modeling, and the first Goals API route, but the user-facing MVP is still under construction.
+This repository has moved past the initial foundation stage. Core infrastructure, domain models, Goal Management, and Task Management are in place, while scheduling and re-planning are still under construction.
 
 Implemented so far:
 
@@ -24,16 +24,17 @@ Implemented so far:
 - Embedded schemas for `TimeBlock`, task assignments, and schedule feedback
 - Zod input schemas for Goal, Task, and Schedule create/update flows
 - Model relationship documentation in `docs/model-graph.md`
-- `POST /api/goals` for creating goals
+- Full Goal CRUD routes and a Goals management page
+- Full Task CRUD routes and a Tasks management page
 - `GET /api/health/db` for checking the database connection layer
+- Local Docker Compose MongoDB workflow
+- Vitest-based local test workflow for schemas, shared helpers, serializers, and route validation
 
 What is not implemented yet:
 
-- Goal list/detail/update/delete APIs
-- Task CRUD APIs
 - Schedule generation logic
 - Reasoning and re-planning flows
-- User-facing management pages for goals, tasks, and schedules
+- User-facing schedule generation and schedule display pages
 
 ## Tech Stack
 
@@ -144,7 +145,7 @@ The first test batch focuses on stable, fast feedback:
 
 - schema validation and input normalization
 - API response envelope helpers
-- goal serialization
+- goal and task serialization
 - route-level validation paths that should fail before any database call
 
 ## Environment Variables
