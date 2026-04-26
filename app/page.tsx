@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen items-center bg-[radial-gradient(circle_at_top,#fff7ed,transparent_45%),linear-gradient(180deg,#fffaf3_0%,#fff 48%,#f8fafc_100%)] px-6 py-16 text-slate-950">
@@ -25,6 +27,17 @@ export default function Home() {
             </span>
             <span className="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200">
               Re-plan from feedback
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/goals"
+              className="inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+            >
+              Open goals board
+            </Link>
+            <span className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600">
+              Goal CRUD is live
             </span>
           </div>
         </section>

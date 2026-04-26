@@ -7,6 +7,13 @@ export const objectIdSchema = z
   .trim()
   .regex(objectIdPattern, "Invalid ObjectId.");
 
+export const nonEmptyUpdateInputSchema = z
+  .object({})
+  .passthrough()
+  .refine((value) => Object.keys(value).length > 0, {
+    message: "At least one field must be provided.",
+  });
+
 export const trimmedOptionalString = (maxLength: number) =>
   z
     .string()

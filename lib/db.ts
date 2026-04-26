@@ -10,6 +10,8 @@ if (!MONGODB_URI) {
   );
 }
 
+const resolvedMongoDbUri = MONGODB_URI;
+
 type MongooseCache = {
   conn: typeof mongoose | null;
   promise: Promise<typeof mongoose> | null;
@@ -38,7 +40,7 @@ export async function connectToDatabase() {
   }
 
   if (!mongooseCache.promise) {
-    mongooseCache.promise = mongoose.connect(MONGODB_URI, {
+    mongooseCache.promise = mongoose.connect(resolvedMongoDbUri, {
       bufferCommands: false,
     });
   }
