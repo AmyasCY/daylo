@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { TASK_PRIORITIES, TASK_STATUSES } from "@/models/task";
 import {
+  nonEmptyUpdateInputSchema,
   nullableDateSchema,
   objectIdSchema,
   trimmedOptionalString,
@@ -21,11 +22,9 @@ export const createTaskInputSchema = z.object({
   completedAt: nullableDateSchema,
 });
 
-export const updateTaskInputSchema = createTaskInputSchema
-  .partial()
-  .refine((value) => Object.keys(value).length > 0, {
-    message: "At least one field must be provided.",
-  });
+export const updateTaskInputSchema = nonEmptyUpdateInputSchema.pipe(
+  createTaskInputSchema.partial(),
+);
 
 export type CreateTaskInput = z.infer<typeof createTaskInputSchema>;
 export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;

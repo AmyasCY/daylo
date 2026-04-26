@@ -12,15 +12,28 @@ Daylo is a single-user daily planning app. The goal of the MVP is to help a user
 
 ## Current Status
 
-This repository is in the foundation stage. The project now has Daylo-specific site metadata and landing content, but core business features are still being built.
+This repository is in the foundation stage. The project already has Daylo-specific site metadata, core infrastructure, initial domain modeling, and the first Goals API route, but the user-facing MVP is still under construction.
+
+Implemented so far:
+
+- Daylo landing page and site metadata
+- `.env.example` with the initial `MONGODB_URI` requirement
+- Reusable MongoDB / Mongoose connection helper
+- Shared API success/error response helpers
+- Mongoose models for `Goal`, `Task`, and `Schedule`
+- Embedded schemas for `TimeBlock`, task assignments, and schedule feedback
+- Zod input schemas for Goal, Task, and Schedule create/update flows
+- Model relationship documentation in `docs/model-graph.md`
+- `POST /api/goals` for creating goals
+- `GET /api/health/db` for checking the database connection layer
 
 What is not implemented yet:
 
-- Database connection and persistence
-- Domain models for goals, tasks, schedules, and time blocks
-- CRUD APIs
-- Scheduling logic
+- Goal list/detail/update/delete APIs
+- Task CRUD APIs
+- Schedule generation logic
 - Reasoning and re-planning flows
+- User-facing management pages for goals, tasks, and schedules
 
 ## Tech Stack
 
@@ -56,7 +69,8 @@ Module boundaries:
 
 - Node.js 20+ recommended
 - npm
-- MongoDB running locally or a MongoDB connection string you can use for development
+- Docker Desktop or another Docker runtime for the included MongoDB setup
+- Or a separate MongoDB connection string you can use for development
 
 ### Install dependencies
 
@@ -70,7 +84,27 @@ npm install
 cp .env.example .env.local
 ```
 
-Set `MONGODB_URI` in `.env.local` to your local or hosted MongoDB instance.
+The default `MONGODB_URI` in `.env.example` already matches the Docker Compose setup in this repo, so you can usually leave it as-is for local development.
+
+### Start MongoDB with Docker
+
+```bash
+docker compose up -d
+```
+
+This starts a local MongoDB container on `127.0.0.1:27017` and stores database files in the named Docker volume `daylo-mongodb-data`.
+
+To stop it later:
+
+```bash
+docker compose down
+```
+
+To stop it and remove the persisted database volume too:
+
+```bash
+docker compose down -v
+```
 
 ### Start the dev server
 
@@ -80,11 +114,38 @@ npm run dev
 
 Then open [http://localhost:3000](http://localhost:3000).
 
+### Verify the database connection
+
+With the Docker container and dev server running, visit [http://localhost:3000/api/health/db](http://localhost:3000/api/health/db).
+
+You should get a JSON response showing the connected database name, host, and Mongoose ready state.
+
 ### Quality checks
 
 ```bash
 npm run lint
 ```
+
+### Local tests
+
+Run the current unit and route-validation tests with:
+
+```bash
+npm run test
+```
+
+For watch mode while developing:
+
+```bash
+npm run test:watch
+```
+
+The first test batch focuses on stable, fast feedback:
+
+- schema validation and input normalization
+- API response envelope helpers
+- goal serialization
+- route-level validation paths that should fail before any database call
 
 ## Environment Variables
 
@@ -95,6 +156,8 @@ The app does not read environment variables in code yet, but the project now def
 Notes:
 
 - Keep secrets in `.env.local`, not in source control
+- `mongodb://127.0.0.1:27017/daylo` is the correct value when the Next.js app runs on your host machine and MongoDB runs through this repo's Docker Compose file
+- If you later run the app inside Docker too, `127.0.0.1` will no longer point at MongoDB; use the Compose service name instead
 - In this Next.js App Router project, non-`NEXT_PUBLIC_` variables stay server-only
 - Only prefix a variable with `NEXT_PUBLIC_` if it truly needs to be exposed to the browser
 

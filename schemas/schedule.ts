@@ -1,6 +1,11 @@
 import { z } from "zod";
 
-import { objectIdSchema, requiredDateSchema, trimmedOptionalString } from "@/schemas/common";
+import {
+  nonEmptyUpdateInputSchema,
+  objectIdSchema,
+  requiredDateSchema,
+  trimmedOptionalString,
+} from "@/schemas/common";
 
 export const scheduleTaskAssignmentInputSchema = z
   .object({
@@ -39,11 +44,9 @@ export const createScheduleInputSchema = z.object({
   feedbackNotes: z.array(scheduleFeedbackInputSchema).optional().default([]),
 });
 
-export const updateScheduleInputSchema = createScheduleInputSchema
-  .partial()
-  .refine((value) => Object.keys(value).length > 0, {
-    message: "At least one field must be provided.",
-  });
+export const updateScheduleInputSchema = nonEmptyUpdateInputSchema.pipe(
+  createScheduleInputSchema.partial(),
+);
 
 export type ScheduleTaskAssignmentInput = z.infer<
   typeof scheduleTaskAssignmentInputSchema
